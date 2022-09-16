@@ -14,6 +14,13 @@
               item.quantity
             }}
             x ${{ item.product.price }}
+            <v-btn
+              x-small
+              color="secondary"
+              dark
+              @click.prevent="RemoveProductFromCart(item.product)"
+              >Remove
+            </v-btn>
           </v-list-item-title>
           <!-- <hr> -->
         </v-list-item>
@@ -113,6 +120,9 @@ export default {
         product: EachProduct,
         quantity: 1,
       })
+    },
+    RemoveProductFromCart(product) {
+      this.$store.dispatch('removeProductFromCart', product)
     },
   },
 }

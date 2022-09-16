@@ -14,6 +14,9 @@ export const actions = {
   addProductToCart({ commit }, { product, quantity }) {
     commit('ADD_TO_CART', { product, quantity })
   },
+  removeProductFromCart({ commit }, { product }) {
+    commit('REMOVE_PROFUCT_FORM_CART', { product })
+  },
 }
 
 export const mutations = {
@@ -27,6 +30,11 @@ export const mutations = {
     }
 
     state.cart.push({ product, quantity })
+  },
+  REMOVE_PROFUCT_FORM_CART(state, product) {
+    state.cart = state.cart.filter((item) => {
+      return item.product.id !== product.id
+    })
   },
 }
 
